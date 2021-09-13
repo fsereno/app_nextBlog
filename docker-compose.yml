@@ -3,7 +3,7 @@ version: '3.9'
 services:
     server:
         tty: true
-        image: 'fabiosereno/app-next-blogg:1.3.0'
+        image: 'fabiosereno/app-next-blogg:1.4.0'
         ports:
             - '3000:3000'
         volumes:
