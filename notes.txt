@@ -1,1 +1,1 @@
-https://app-next-blogg.vercel.app/
+https://app-next-blog.vercel.app/
