@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { connectDB, getAll } from '../../utils/mongoDbUtil';
+import BloggItem from '../../components/blogg-item';
+import styles from '../../styles/Home.module.css'
+
 
 function AllPostsPage(props) {
 
@@ -15,8 +18,8 @@ function AllPostsPage(props) {
           content='All blog posts will be listed here.'
         />
       </Head>
-      <div>
-        {posts.map(x => <p> {x.title} </p> )}
+      <div className={styles.container}>
+        {posts.map(x => <BloggItem title={x.title} key={x._id} summary={x.summary} /> )}
       </div>
     </Fragment>
   );
@@ -25,19 +28,18 @@ function AllPostsPage(props) {
 export async function getServerSideProps() {
 
   let posts  = [];
-  let client;
 
   try {
-    client = await connectDB();
+    const client = await connectDB();
     const data = await getAll(client, 'posts');
     posts = JSON.stringify(data);
-  } finally {
     client.close();
+  } catch (error) {
+    console.error(error.message);
   }
 
   return {
     props: {
-      test: "Some value",
       posts
     },
   };

@@ -22,7 +22,7 @@ export async function getAll(client, collection, sort) {
     const result = await db.collection(collection)
         .find()
         .sort(sort)
-        .toArray();
+        .toArray();;
 
     return result;
 
