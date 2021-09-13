@@ -1,5 +1,5 @@
 import { MongoClient } from 'mongodb';
-import { mongoDBConnectionString } from './mongoDBconnectionStrings';
+import { mongoDBConnectionString } from './connectionStrings';
 
 export async function connectDB() {
 
