@@ -25,7 +25,7 @@ function AllPostsPage(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 
   let posts  = [];
 
@@ -42,6 +42,7 @@ export async function getServerSideProps() {
     props: {
       posts
     },
+    revalidate: 10
   };
 }
 
