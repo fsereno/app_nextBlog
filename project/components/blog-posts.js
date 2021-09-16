@@ -1,9 +1,7 @@
 import BlogPost from "./blog-post"
 
 export default function BlogPosts(props) {
-
     const posts = typeof props.posts === 'string' ? JSON.parse(props.posts) : props.posts;
-
     return (
         <>
             {

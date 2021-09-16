@@ -1,9 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Image from 'next/image';
 import BlogPosts from '../components/blog-posts';
-import { getPosts } from '../utils/dal'; 
-import styles from '../styles/Home.module.css'
-
+import { getPosts } from '../utils/dal';
+import styles from '../styles/Home.module.css';
 
 export default function Home(props) {
   return (
@@ -14,7 +13,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js! TEST</a>
         </h1>
@@ -56,7 +55,6 @@ export default function Home(props) {
             </p>
           </a>
         </div>
-      </main>
 
       <footer className={styles.footer}>
         <a

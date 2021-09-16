@@ -1,18 +1,16 @@
 import Head from 'next/head';
 import { getPosts } from '../../utils/dal';
 import BlogPosts from '../../components/blog-posts';
-import styles from '../../styles/Home.module.css'
+import styles from '../../styles/Home.module.css';
 
 export default function AllPostsPage(props) {
-
   const posts = JSON.parse(props.posts);
-
   return (
     <>
       <Head>
         <title>All Posts</title>
         <meta
-          name='All posts'
+          name='description'
           content='All blog posts will be listed here.'
         />
       </Head>
