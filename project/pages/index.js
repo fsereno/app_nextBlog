@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import BlogPosts from '../components/blog-posts';
+import { getPosts } from '../utils/dal'; 
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+
+export default function Home(props) {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,6 +25,9 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
+
+        <BlogPosts posts={props.posts} />
+
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -66,4 +72,14 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts  = await getPosts({query: { featured: true }});
+  return {
+    props: {
+      posts: JSON.stringify(posts)
+    },
+    revalidate: 10
+  };
 }

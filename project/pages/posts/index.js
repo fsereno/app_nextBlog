@@ -1,16 +1,14 @@
 import Head from 'next/head';
-import { Fragment } from 'react';
-import { connectDB, getAll } from '../../utils/mongoDbUtil';
-import BloggItem from '../../components/blogg-item';
+import { getPosts } from '../../utils/dal';
+import BlogPosts from '../../components/blog-posts';
 import styles from '../../styles/Home.module.css'
 
-
-function AllPostsPage(props) {
+export default function AllPostsPage(props) {
 
   const posts = JSON.parse(props.posts);
 
   return (
-    <Fragment>
+    <>
       <Head>
         <title>All Posts</title>
         <meta
@@ -19,31 +17,20 @@ function AllPostsPage(props) {
         />
       </Head>
       <div className={styles.container}>
-        {posts.map(x => <BloggItem title={x.title} key={x._id} summary={x.summary} /> )}
+        <div className={styles.grid}>
+          <BlogPosts posts={posts} />
+        </div>
       </div>
-    </Fragment>
+    </>
   );
 }
 
 export async function getStaticProps() {
-
-  let posts  = [];
-
-  try {
-    const client = await connectDB();
-    const data = await getAll(client, 'posts');
-    posts = JSON.stringify(data);
-    client.close();
-  } catch (error) {
-    console.error(error.message);
-  }
-
+  const posts  = await getPosts();
   return {
     props: {
-      posts
+      posts: JSON.stringify(posts)
     },
     revalidate: 10
   };
 }
-
-export default AllPostsPage;
