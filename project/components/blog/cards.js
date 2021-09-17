@@ -6,7 +6,7 @@ export default function Cards(props) {
         <>
             {
                 posts.map(post =>
-                    <Card title={post.title} key={post._id} summary={post.summary} />
+                    <Card title={post.title} id={post._id} key={post._id} summary={post.summary} />
                 )
             }
         </>
