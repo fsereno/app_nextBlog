@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { getPosts } from '../../utils/dal';
 import Cards from '../../components/blog/cards';
 import styles from '../../styles/Home.module.css';
+import Title from '../../components/ui/title';
 
 export default function AllPostsPage(props) {
   const posts = JSON.parse(props.posts);
@@ -15,6 +16,7 @@ export default function AllPostsPage(props) {
         />
       </Head>
       <div className={styles.container}>
+      <Title value="All posts"/>
         <div className={styles.grid}>
           <Cards posts={posts} />
         </div>

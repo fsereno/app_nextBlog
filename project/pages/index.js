@@ -36,7 +36,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-  const posts  = await getPosts({query: { featured: true }});
+  const posts  = await getPosts({ featured: true });
   return {
     props: {
       posts: JSON.stringify(posts)

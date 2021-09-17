@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import { mongoDBConnectionString } from './connectionStrings';
 
 export async function connectDB() {
@@ -17,13 +17,16 @@ export async function insertDocument(client, collection, document) {
 }
 
 export async function getAll({client, collection, sort, query}) {
-
     const db = client.db();
     const result = await db.collection(collection)
         .find(query)
         .sort(sort)
-        .toArray();;
-
+        .toArray();
     return result;
+}
 
+export async function getById({client, collection, query}) {
+    const db = client.db();
+    const result = await db.collection(collection).findOne({_id: ObjectId(query.id)});
+    return result;
 }
