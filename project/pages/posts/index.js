@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { getPosts } from '../../utils/dal';
-import BlogPosts from '../../components/blog-posts';
+import Cards from '../../components/blog/cards';
 import styles from '../../styles/Home.module.css';
 
 export default function AllPostsPage(props) {
@@ -16,7 +16,7 @@ export default function AllPostsPage(props) {
       </Head>
       <div className={styles.container}>
         <div className={styles.grid}>
-          <BlogPosts posts={posts} />
+          <Cards posts={posts} />
         </div>
       </div>
     </>

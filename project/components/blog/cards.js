@@ -1,12 +1,12 @@
-import BlogPost from "./blog-post"
+import Card from "./card"
 
-export default function BlogPosts(props) {
+export default function Cards(props) {
     const posts = typeof props.posts === 'string' ? JSON.parse(props.posts) : props.posts;
     return (
         <>
             {
                 posts.map(post =>
-                    <BlogPost title={post.title} key={post._id} summary={post.summary} />
+                    <Card title={post.title} key={post._id} summary={post.summary} />
                 )
             }
         </>

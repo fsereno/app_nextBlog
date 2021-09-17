@@ -1,6 +1,6 @@
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Card.module.css'
 
-export default function BlogPost({title, summary}) {
+export default function Card({title, summary}) {
     return (
         <a href="#" className={styles.card}>
             <h2>{title}</h2>
