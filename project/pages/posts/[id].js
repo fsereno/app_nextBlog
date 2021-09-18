@@ -1,12 +1,13 @@
+import Post from '../../components/blog/post';
 import { getPostById } from '../../utils/dal';
 
 export default function PostPage(props) {
     const post = JSON.parse(props.post);
     return (
         <>
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
-            <p>{props.id}</p>
+            <Post post={post}>
+                {post.content}
+            </Post>
         </>
     )
 }
