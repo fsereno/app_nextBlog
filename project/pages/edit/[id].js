@@ -1,5 +1,4 @@
 import EditorForm from '../../components/blog/editor-form';
-import Post from '../../components/blog/post';
 import { getPostById } from '../../utils/dal';
 
 export default function PostPage(props) {
