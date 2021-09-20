@@ -1,3 +1,4 @@
+import EditorForm from '../../components/blog/editor-form';
 import Post from '../../components/blog/post';
 import { getPostById } from '../../utils/dal';
 
@@ -5,9 +6,7 @@ export default function PostPage(props) {
     const post = JSON.parse(props.post);
     return (
         <>
-            <Post post={post} id={props.id}>
-                {post.content}
-            </Post>
+            <EditorForm post={post} />
         </>
     )
 }
@@ -17,7 +16,6 @@ export async function getServerSideProps(context) {
     const post = await getPostById({id: params.id});
     return {
         props: {
-            id: params.id,
             post: JSON.stringify(post)
         }
     }
