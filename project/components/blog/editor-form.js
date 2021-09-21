@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import Router from 'next/router';
 import classes from '../../styles/editor-form.module.css';
 
-export default function EditorForm({post}) {
+export default function EditorForm({post, id}) {
     const [ title, setTitle ] = useState(post.title);
     const [ summary, setSummary ] = useState(post.summary);
     const [ content, setContent ] = useState(post.content);
@@ -11,10 +12,25 @@ export default function EditorForm({post}) {
         const isValid = event.nativeEvent.target.checkValidity();
 
         if (isValid) {
-            console.log("submit to api");
+            const data = {
+                id,
+                title,
+                summary,
+                content
+            }
+            fetch('/api/posts/edit', {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(response => response.json()
+            .then(data =>  {
+                console.log(data);
+                Router.push(`/posts/${id}`);
+            })).catch(error => console.error(error.message));
         }
-
-        console.log(isValid);
     }
 
     return (

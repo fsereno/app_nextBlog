@@ -5,7 +5,7 @@ export default function PostPage(props) {
     const post = JSON.parse(props.post);
     return (
         <>
-            <EditorForm post={post} />
+            <EditorForm post={post} id={props.id} />
         </>
     )
 }
@@ -15,6 +15,7 @@ export async function getServerSideProps(context) {
     const post = await getPostById({id: params.id});
     return {
         props: {
+            id: params.id,
             post: JSON.stringify(post)
         }
     }
