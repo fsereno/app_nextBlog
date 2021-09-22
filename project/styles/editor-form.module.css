@@ -25,6 +25,10 @@
   border: 1px solid red;
 }
 
+.form input:valid, .form textarea:valid {
+  border: 1px solid green;
+}
+
 .control {
   min-width: 10rem;
   margin-top: 1rem;

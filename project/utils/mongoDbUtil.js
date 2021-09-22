@@ -14,7 +14,7 @@ export async function insertDocument(client, collection, document) {
 
 export async function updatetDocumentById({client, collection, document, query}) {
     const db = client.db();
-    const result = await db.collection(collection).updateOne({_id: ObjectId(query.id)}, {$set: document});
+    const result = await db.collection(collection).updateOne({_id: ObjectId(query.id)}, {$set: document}, {upsert: true});
     return result;
 }
 

@@ -2,10 +2,10 @@ import { useState } from 'react';
 import Router from 'next/router';
 import classes from '../../styles/editor-form.module.css';
 
-export default function EditorForm({post, id}) {
-    const [ title, setTitle ] = useState(post.title);
-    const [ summary, setSummary ] = useState(post.summary);
-    const [ content, setContent ] = useState(post.content);
+export default function EditorForm({post = {}, id}) {
+    const [ title, setTitle ] = useState(post.title || "");
+    const [ summary, setSummary ] = useState(post.summary || "");
+    const [ content, setContent ] = useState(post.content || "");
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -27,7 +27,11 @@ export default function EditorForm({post, id}) {
             })
             .then(response => response.json()
             .then(data =>  {
-                Router.push(`/posts/${id}`);
+                if (id) {
+                    Router.push(`/posts/${id}`);
+                } else {
+                    Router.push('/posts/');
+                }
             })).catch(error => console.error(error.message));
         }
     }

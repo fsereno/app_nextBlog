@@ -1,7 +1,7 @@
 import EditorForm from '../../components/blog/editor-form';
 import { getPostById } from '../../utils/dal';
 
-export default function PostPage(props) {
+export default function EditPage(props) {
     const post = JSON.parse(props.post);
     return (
         <>
