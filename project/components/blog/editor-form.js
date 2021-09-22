@@ -27,7 +27,6 @@ export default function EditorForm({post, id}) {
             })
             .then(response => response.json()
             .then(data =>  {
-                console.log(data);
                 Router.push(`/posts/${id}`);
             })).catch(error => console.error(error.message));
         }
