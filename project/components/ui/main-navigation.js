@@ -10,6 +10,7 @@ export default function MainNavigation() {
                     <Link href="/"><a className={classes.link}>Home</a></Link>
                     <Link href="/posts"><a className={classes.link}>Posts</a></Link>
                     <Link href="/edit"><a className={classes.link}>Add</a></Link>
+                    <Link href="/login"><a className={classes.link}>Login</a></Link>
                 </nav>
             </header>
         </>

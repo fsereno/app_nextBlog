@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { getPosts } from '../../utils/dal';
 import Cards from '../../components/blog/cards';
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/Main.module.css';
 import Title from '../../components/ui/title';
 
 export default function AllPostsPage(props) {
@@ -15,11 +15,9 @@ export default function AllPostsPage(props) {
           content='All blog posts will be listed here.'
         />
       </Head>
-      <div className={styles.container}>
-      <Title value="All posts"/>
-        <div className={styles.grid}>
-          <Cards posts={posts} />
-        </div>
+      <Title>All posts</Title>
+      <div className={styles.grid}>
+        <Cards posts={posts} />
       </div>
     </>
   );

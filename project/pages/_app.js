@@ -1,3 +1,4 @@
+import Container from '../components/ui/container';
 import Layout from '../components/ui/layout';
 import MainNavigation from '../components/ui/main-navigation';
 import '../styles/globals.css'
@@ -7,7 +8,9 @@ function MyApp({ Component, pageProps }) {
     <>
       <Layout>
         <MainNavigation />
-        <Component {...pageProps} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
       </Layout>
     </>
   )
