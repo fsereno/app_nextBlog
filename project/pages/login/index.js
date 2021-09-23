@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Title from "../../components/ui/title";
+import AuthForm from '../../components/auth/auth-form';
 
 export default function LoginPage() {
     return (
@@ -11,7 +11,7 @@ export default function LoginPage() {
                     content='User login and signup.'
                 />
             </Head>
-            <Title>Login</Title>
+            <AuthForm />
         </>
     )
 }

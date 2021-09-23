@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Router from 'next/router';
-import classes from '../../styles/editor-form.module.css';
+import classes from '../../styles/form.module.css';
 
 export default function EditorForm({post = {}, id}) {
     const [ title, setTitle ] = useState(post.title || "");
