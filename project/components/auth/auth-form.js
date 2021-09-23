@@ -20,14 +20,12 @@ async function createUser(email, password) {
   if (!response.ok) {
     throw new Error(data.message || 'Something went wrong!');
   }
-
   return data;
 }
 
 function AuthForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
 
@@ -50,8 +48,7 @@ function AuthForm() {
       });
 
       if (!result.error) {
-        // set auth state
-        router.replace('/profile');
+        router.replace('/');
       }
     } else {
       try {
