@@ -45,6 +45,17 @@
   margin-left: 0.5rem;
 }
 
+a.link {
+  margin: 0 1rem 0 0;
+}
+
+a.link:hover,
+a.link:focus,
+a.link:active {
+    color: #0070f3;
+    border-color: #0070f3;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

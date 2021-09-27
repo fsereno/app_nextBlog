@@ -39,14 +39,3 @@
   border-radius: 6px;
   cursor: pointer;
 }
-
-a.link {
-  margin: 0 1rem 0 0;
-}
-
-a.link:hover,
-a.link:focus,
-a.link:active {
-    color: #0070f3;
-    border-color: #0070f3;
-}

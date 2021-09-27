@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/client';
 import classes from '../../styles/main-navigation.module.css';
+import mainClasses from '../../styles/Main.module.css';
 
 export default function MainNavigation() {
     const [session, loading] = useSession();
@@ -11,15 +12,15 @@ export default function MainNavigation() {
     return (
         <>
             <header className={classes.header}>
-                <Link href="/"><a className={`${classes.link} ${classes.logo}`}>Blog.js</a></Link>
+                <Link href="/"><a className={`${mainClasses.link} ${classes.logo}`}>Blog.js</a></Link>
                 <nav>
-                    <Link href="/"><a className={classes.link}>Home</a></Link>
-                    <Link href="/posts"><a className={classes.link}>Posts</a></Link>
-                    {session && <Link href="/edit"><a className={classes.link}>Add</a></Link>}
+                    <Link href="/"><a className={mainClasses.link}>Home</a></Link>
+                    <Link href="/posts"><a className={mainClasses.link}>Posts</a></Link>
+                    {session && <Link href="/edit"><a className={mainClasses.link}>Add</a></Link>}
                     {!session && !loading && (
-                        <Link href="/login"><a className={classes.link}>Login</a></Link>
+                        <Link href="/login"><a className={mainClasses.link}>Login</a></Link>
                     )}
-                    {session && <a href="#" className={classes.link} onClick={logoutHandler}>Logout</a>}
+                    {session && <a href="#" className={mainClasses.link} onClick={logoutHandler}>Logout</a>}
                 </nav>
             </header>
         </>
