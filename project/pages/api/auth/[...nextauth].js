@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
 
-import { verifyPassword } from '../../../utils/auth';
-import { connectDB } from '../../../utils/mongoDbUtil';
+import { verifyPassword } from "../../../utils/auth";
+import { connectDB } from "../../../utils/mongoDbUtil";
 
 export default NextAuth({
   session: {
@@ -13,7 +13,7 @@ export default NextAuth({
       async authorize(credentials) {
         const client = await connectDB();
 
-        const usersCollection = client.db().collection('users');
+        const usersCollection = client.db().collection("users");
 
         const user = await usersCollection.findOne({
           email: credentials.email,
@@ -21,7 +21,7 @@ export default NextAuth({
 
         if (!user) {
           client.close();
-          throw new Error('No user found!');
+          throw new Error("No user found!");
         }
 
         const isValid = await verifyPassword(
@@ -31,7 +31,7 @@ export default NextAuth({
 
         if (!isValid) {
           client.close();
-          throw new Error('Could not log you in!');
+          throw new Error("Could not log you in!");
         }
 
         client.close();

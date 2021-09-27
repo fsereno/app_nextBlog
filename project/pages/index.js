@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Cards from '../components/blog/cards';
-import Title from '../components/ui/title';
-import { getPosts } from '../utils/dal';
-import styles from '../styles/main.module.css';
-import Description from '../components/ui/description';
+import Head from "next/head";
+import Image from "next/image";
+import Cards from "../components/blog/cards";
+import Title from "../components/ui/title";
+import { getPosts } from "../utils/dal";
+import styles from "../styles/main.module.css";
+import Description from "../components/ui/description";
 
 export default function Home(props) {
   return (
@@ -25,22 +25,22 @@ export default function Home(props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const posts  = await getPosts({ featured: true });
+  const posts = await getPosts({ featured: true });
   return {
     props: {
-      posts: JSON.stringify(posts)
+      posts: JSON.stringify(posts),
     },
-    revalidate: 10
+    revalidate: 10,
   };
 }

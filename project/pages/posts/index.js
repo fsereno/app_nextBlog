@@ -1,8 +1,8 @@
-import Head from 'next/head';
-import { getPosts } from '../../utils/dal';
-import Cards from '../../components/blog/cards';
-import styles from '../../styles/main.module.css';
-import Title from '../../components/ui/title';
+import Head from "next/head";
+import { getPosts } from "../../utils/dal";
+import Cards from "../../components/blog/cards";
+import styles from "../../styles/main.module.css";
+import Title from "../../components/ui/title";
 
 export default function AllPostsPage(props) {
   const posts = JSON.parse(props.posts);
@@ -11,8 +11,8 @@ export default function AllPostsPage(props) {
       <Head>
         <title>All Posts</title>
         <meta
-          name='description'
-          content='All blog posts will be listed here.'
+          name="description"
+          content="All blog posts will be listed here."
         />
       </Head>
       <Title>All posts</Title>
@@ -24,11 +24,11 @@ export default function AllPostsPage(props) {
 }
 
 export async function getStaticProps() {
-  const posts  = await getPosts();
+  const posts = await getPosts();
   return {
     props: {
-      posts: JSON.stringify(posts)
+      posts: JSON.stringify(posts),
     },
-    revalidate: 10
+    revalidate: 10,
   };
 }

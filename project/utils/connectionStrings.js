@@ -1,4 +1,3 @@
-
 const user = process.env.MONGO_DB_USER;
 const password = process.env.MONGO_DB_PASSWORD;
 const database = process.env.MONGO_DB;
