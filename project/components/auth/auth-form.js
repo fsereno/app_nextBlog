@@ -1,24 +1,24 @@
-import { useState, useRef } from 'react';
-import { signIn } from 'next-auth/client';
-import { useRouter } from 'next/router';
+import { useState, useRef } from "react";
+import { signIn } from "next-auth/client";
+import { useRouter } from "next/router";
 
-import classes from '../../styles/auth-form.module.css';
-import formClasses from '../../styles/form.module.css'
-import Title from '../ui/title';
+import classes from "../../styles/auth-form.module.css";
+import formClasses from "../../styles/form.module.css";
+import Title from "../ui/title";
 
 async function createUser(email, password) {
-  const response = await fetch('/api/auth/signup', {
-    method: 'POST',
+  const response = await fetch("/api/auth/signup", {
+    method: "POST",
     body: JSON.stringify({ email, password }),
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   });
 
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || 'Error creating user!');
+    throw new Error(data.message || "Error creating user!");
   }
   return data;
 }
@@ -41,14 +41,14 @@ function AuthForm() {
     const enteredPassword = passwordInputRef.current.value;
 
     if (isLogin) {
-      const result = await signIn('credentials', {
+      const result = await signIn("credentials", {
         redirect: false,
         email: enteredEmail,
         password: enteredPassword,
       });
 
       if (!result.error) {
-        router.replace('/');
+        router.replace("/");
       }
     } else {
       try {
@@ -62,27 +62,31 @@ function AuthForm() {
 
   return (
     <>
-      <Title>{isLogin ? 'Login' : 'Sign Up'}</Title>
+      <Title>{isLogin ? "Login" : "Sign Up"}</Title>
       <form className={formClasses.form} onSubmit={submitHandler}>
-      <div className={formClasses.controls}>
+        <div className={formClasses.controls}>
           <div className={formClasses.control}>
-            <label htmlFor='email'>Your Email</label>
-            <input type='email' id='email' required ref={emailInputRef} />
+            <label htmlFor="email">Your Email</label>
+            <input type="email" id="email" required ref={emailInputRef} />
           </div>
           <div className={formClasses.control}>
-            <label htmlFor='password'>Your Password</label>
+            <label htmlFor="password">Your Password</label>
             <input
-              type='password'
-              id='password'
+              type="password"
+              id="password"
               required
               ref={passwordInputRef}
             />
           </div>
         </div>
         <div className={classes.actions}>
-          <button>{isLogin ? 'Login' : 'Create Account'}</button>
-          <a href="#" className={classes.toggle} onClick={switchAuthModeHandler}>
-            {isLogin ? 'Create new account' : 'Login with existing account'}
+          <button>{isLogin ? "Login" : "Create Account"}</button>
+          <a
+            href="#"
+            className={classes.toggle}
+            onClick={switchAuthModeHandler}
+          >
+            {isLogin ? "Create new account" : "Login with existing account"}
           </a>
         </div>
       </form>
