@@ -6,6 +6,7 @@ export default function EditorForm({post = {}, id}) {
     const [ title, setTitle ] = useState(post.title || "");
     const [ summary, setSummary ] = useState(post.summary || "");
     const [ content, setContent ] = useState(post.content || "");
+    const [ featured, setFeatured ] = useState(post.featured || false);
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -16,7 +17,8 @@ export default function EditorForm({post = {}, id}) {
                 id,
                 title,
                 summary,
-                content
+                content,
+                featured
             }
             fetch('/api/posts/edit', {
                 method: 'PUT',
@@ -68,6 +70,19 @@ export default function EditorForm({post = {}, id}) {
                         required
                         value={content}
                         onChange={event => setContent(event.target.value)}
+                    />
+                </div>
+                <div className={classes.control}>
+                    <label htmlFor='featured'>Featured</label>
+                    <input
+                        type='checkbox'
+                        id='featured'
+                        checked={featured}
+                        onChange={event => { 
+                            console.log(event.target.checked)
+                            setFeatured(event.target.checked)}
+
+                        }
                     />
                 </div>
             </div>

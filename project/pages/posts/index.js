@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { getPosts } from '../../utils/dal';
 import Cards from '../../components/blog/cards';
-import styles from '../../styles/Main.module.css';
+import styles from '../../styles/main.module.css';
 import Title from '../../components/ui/title';
 
 export default function AllPostsPage(props) {

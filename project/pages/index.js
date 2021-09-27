@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Cards from '../components/blog/cards';
 import Title from '../components/ui/title';
 import { getPosts } from '../utils/dal';
-import styles from '../styles/Main.module.css';
+import styles from '../styles/main.module.css';
 import Description from '../components/ui/description';
 
 export default function Home(props) {
