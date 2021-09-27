@@ -21,6 +21,10 @@
   margin-bottom: 1rem;
 }
 
+.form input[type='checkbox'] {
+  width: auto;
+}
+
 .form input:invalid, .form textarea:invalid {
   border: 1px solid red;
 }
