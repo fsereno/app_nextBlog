@@ -21,7 +21,7 @@ export async function updatePost(query, document) {
 }
 
 async function handler(deligate, args) {
-  let result;
+  let result = [];
   try {
     const client = await connectDB();
     result = await deligate({ ...args, client });
