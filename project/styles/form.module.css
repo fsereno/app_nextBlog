@@ -63,4 +63,8 @@
 
 .error {
   color: red;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0;
 }

@@ -2,9 +2,10 @@ import { useState, useRef } from "react";
 import { signIn } from "next-auth/client";
 import { useRouter } from "next/router";
 
+import Title from "../ui/title";
+import ErrorMessage from "../ui/error-message";
 import classes from "../../styles/auth-form.module.css";
 import formClasses from "../../styles/form.module.css";
-import Title from "../ui/title";
 
 async function createUser(email, password) {
   const response = await fetch("/api/auth/signup", {
@@ -81,7 +82,7 @@ function AuthForm() {
             />
           </div>
         </div>
-        { showLoginError && <div className={formClasses.error}>There was an error, please check your credentials.</div> }
+        <ErrorMessage show={showLoginError}>There was an error, please check your credentials.</ErrorMessage>
         <div className={classes.actions}>
           <button>{isLogin ? "Login" : "Create Account"}</button>
           <a
