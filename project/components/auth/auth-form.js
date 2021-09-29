@@ -27,6 +27,7 @@ function AuthForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
+  const [showLoginError, setShowLoginError] = useState(false);
   const router = useRouter();
 
   function switchAuthModeHandler(e) {
@@ -46,9 +47,10 @@ function AuthForm() {
         email: enteredEmail,
         password: enteredPassword,
       });
-
       if (!result.error) {
         router.replace("/");
+      } else {
+        setShowLoginError(true);
       }
     } else {
       try {
@@ -79,6 +81,7 @@ function AuthForm() {
             />
           </div>
         </div>
+        { showLoginError && <div className={formClasses.error}>There was an error, please check your credentials.</div> }
         <div className={classes.actions}>
           <button>{isLogin ? "Login" : "Create Account"}</button>
           <a

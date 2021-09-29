@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Title from "../ui/title";
+import DeleteAction from '../blog/delete-action';
 import { useSession } from "next-auth/client";
 import postClasses from "../../styles/post.module.css";
 import mainClasses from "../../styles/main.module.css";
@@ -14,6 +15,7 @@ export default function Post({ children, post, id }) {
           <Link href={`/edit/${id}`}>
             <a className={mainClasses.link}>Edit</a>
           </Link>
+          <DeleteAction id={id}/>
         </div>
       )}
       <div className={postClasses.content}>{children}</div>

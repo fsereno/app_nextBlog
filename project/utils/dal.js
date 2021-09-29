@@ -1,4 +1,4 @@
-import { connectDB, getAll, getById, updatetDocumentById } from "./mongoDbUtil";
+import { connectDB, getAll, getById, updatetDocumentById, deleteById } from "./mongoDbUtil";
 
 export async function getPosts(query, sort) {
   return await handler(getAll, { collection: "posts", query, sort });
@@ -6,6 +6,10 @@ export async function getPosts(query, sort) {
 
 export async function getPostById(query) {
   return await handler(getById, { collection: "posts", query });
+}
+
+export async function deletePostById(query) {
+  return await handler(deleteById, { collection: "posts", query });
 }
 
 export async function updatePost(query, document) {
