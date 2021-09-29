@@ -3,6 +3,7 @@ import Title from "../ui/title";
 import DeleteAction from '../blog/delete-action';
 import { useSession } from "next-auth/client";
 import postClasses from "../../styles/post.module.css";
+import headingsClasses from "../../styles/headings.module.css";
 import mainClasses from "../../styles/main.module.css";
 
 export default function Post({ children, post, id }) {
@@ -10,6 +11,7 @@ export default function Post({ children, post, id }) {
   return (
     <>
       <Title>{post.title}</Title>
+      <h4 className={headingsClasses.summary}>{post.summary}</h4>
       {session && (
         <div className={postClasses.controls}>
           <Link href={`/edit/${id}`}>

@@ -12,11 +12,15 @@
 .title {
   margin: 2rem 0 0;
   line-height: 1.15;
+}
+
+.title {
   font-size: 4rem;
 }
 
 .title,
-.description {
+.description,
+.summary {
   text-align: center;
 }
 

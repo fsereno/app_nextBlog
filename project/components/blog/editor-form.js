@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Router from "next/router";
+
+import ErrorMessage from "../ui/error-message";
 import classes from "../../styles/form.module.css";
 
 export default function EditorForm({ post = {}, id }) {
@@ -7,6 +9,7 @@ export default function EditorForm({ post = {}, id }) {
   const [summary, setSummary] = useState(post.summary || "");
   const [content, setContent] = useState(post.content || "");
   const [featured, setFeatured] = useState(post.featured || false);
+  const [showError, setShowError] = useState(false);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -29,14 +32,20 @@ export default function EditorForm({ post = {}, id }) {
       })
         .then((response) =>
           response.json().then((data) => {
-            if (id) {
-              Router.push(`/posts/${id}`);
+            if (!data.error) {
+              if (id) {
+                Router.push(`/posts/${id}`);
+              } else {
+                Router.push("/posts/");
+              }
             } else {
-              Router.push("/posts/");
+              setShowError(true);
             }
+          }).catch(error => {
+            setShowError(true);
+            console.error(error.message)
           })
-        )
-        .catch((error) => console.error(error.message));
+        );
     }
   };
 
@@ -86,6 +95,7 @@ export default function EditorForm({ post = {}, id }) {
           />
         </div>
       </div>
+      <ErrorMessage show={showError}>There was a problem saving your changes.</ErrorMessage>
       <div className={classes.actions}>
         <button>Save</button>
       </div>

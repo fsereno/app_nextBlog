@@ -21,13 +21,13 @@ export async function updatePost(query, document) {
 }
 
 async function handler(deligate, args) {
-  let posts = [];
+  let result;
   try {
     const client = await connectDB();
-    posts = await deligate({ ...args, client });
+    result = await deligate({ ...args, client });
     client.close();
   } catch (error) {
     console.error(error.message);
   }
-  return posts;
+  return result;
 }
