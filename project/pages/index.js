@@ -35,12 +35,11 @@ export default function Home(props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const posts = await getPosts({ featured: true });
   return {
     props: {
       posts: JSON.stringify(posts),
-    },
-    revalidate: 10,
+    }
   };
 }
