@@ -29,9 +29,10 @@ export default function EditorForm({ post = {}, id }) {
         headers: {
           "content-type": "application/json",
         },
-      })
-        .then((response) =>
-          response.json().then((data) => {
+      }).then((response) =>
+        response
+          .json()
+          .then((data) => {
             if (!data.error) {
               if (id) {
                 Router.push(`/posts/${id}`);
@@ -41,11 +42,12 @@ export default function EditorForm({ post = {}, id }) {
             } else {
               setShowError(true);
             }
-          }).catch(error => {
-            setShowError(true);
-            console.error(error.message)
           })
-        );
+          .catch((error) => {
+            setShowError(true);
+            console.error(error.message);
+          })
+      );
     }
   };
 
@@ -95,7 +97,9 @@ export default function EditorForm({ post = {}, id }) {
           />
         </div>
       </div>
-      <ErrorMessage show={showError}>There was a problem saving your changes.</ErrorMessage>
+      <ErrorMessage show={showError}>
+        There was a problem saving your changes.
+      </ErrorMessage>
       <div className={classes.actions}>
         <button>Save</button>
       </div>

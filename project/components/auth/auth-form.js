@@ -82,7 +82,9 @@ function AuthForm() {
             />
           </div>
         </div>
-        <ErrorMessage show={showLoginError}>There was an error, please check your credentials.</ErrorMessage>
+        <ErrorMessage show={showLoginError}>
+          There was an error, please check your credentials.
+        </ErrorMessage>
         <div className={classes.actions}>
           <button>{isLogin ? "Login" : "Create Account"}</button>
           <a

@@ -4,9 +4,7 @@ export default function Cards(props) {
   const posts =
     typeof props.posts === "string" ? JSON.parse(props.posts) : props.posts;
   if (posts.length === 0) {
-    return (
-      <p>There are no posts.</p>
-    )
+    return <p>There are no posts.</p>;
   }
   return (
     <>

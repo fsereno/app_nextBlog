@@ -50,6 +50,7 @@ export async function getById({ client, collection, query }) {
 export async function deleteById({ client, collection, query }) {
   const db = client.db();
   const result = await db
-    .collection(collection).deleteOne({ _id: ObjectId(query.id) })
+    .collection(collection)
+    .deleteOne({ _id: ObjectId(query.id) });
   return result;
 }

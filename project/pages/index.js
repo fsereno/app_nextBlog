@@ -40,6 +40,6 @@ export async function getServerSideProps() {
   return {
     props: {
       posts: JSON.stringify(posts),
-    }
+    },
   };
 }
