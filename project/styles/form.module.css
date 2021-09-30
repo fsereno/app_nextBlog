@@ -22,7 +22,8 @@
 }
 
 .form input[type="checkbox"] {
-  width: auto;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .form input:invalid,
