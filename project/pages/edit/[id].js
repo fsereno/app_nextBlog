@@ -3,12 +3,12 @@ import { getPostById } from "../../utils/dal";
 import Title from "../../components/ui/title";
 import { getSession } from "next-auth/client";
 
-export default function EditPage(props) {
-  const post = JSON.parse(props.post);
+export default function EditPage({post, id}) {
+  const p = JSON.parse(post);
   return (
     <>
       <Title>Edit Post</Title>
-      <EditorForm post={post} id={props.id} />
+      <EditorForm post={p} id={id} />
     </>
   );
 }
@@ -26,11 +26,13 @@ export async function getServerSideProps(context) {
   }
 
   const { params } = context;
-  const post = await getPostById({ id: params.id });
+  const id = params.id;
+  const post = await getPostById({ id });
 
   return {
     props: {
       session,
+      id,
       post: JSON.stringify(post)
     },
   };
