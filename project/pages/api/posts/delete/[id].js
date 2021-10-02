@@ -1,5 +1,12 @@
+import { getSession } from "next-auth/client";
 import { deletePostById } from "../../../../utils/dal";
+
 export default async function handler(req, res) {
+  const session = await getSession({ req });
+  if (!session) {
+    res.status(401).json({ error: true });
+    return;
+  }
   if (req.method === "DELETE") {
     const id = req.query.id;
     const result = await deletePostById({ id });
