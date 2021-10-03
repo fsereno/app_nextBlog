@@ -12,9 +12,7 @@ export default NextAuth({
     Providers.Credentials({
       async authorize(credentials) {
         const client = await connectDB();
-
         const usersCollection = client.db().collection("users");
-
         const user = await usersCollection.findOne({
           email: credentials.email,
         });

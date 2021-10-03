@@ -1,5 +1,5 @@
 import styles from "../../styles/headings.module.css";
 
-export default function Description({ value }) {
-  return <p className={styles.description}>{value}</p>;
+export default function Description({ children }) {
+  return <p className={styles.description}>{children}</p>;
 }

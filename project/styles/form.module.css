@@ -62,8 +62,15 @@
   color: #fff;
 }
 
+.success {
+  color: green;
+}
+
 .error {
   color: red;
+}
+
+.message {
   clear: both;
   width: 100%;
   text-align: center;

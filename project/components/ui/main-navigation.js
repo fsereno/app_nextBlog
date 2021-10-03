@@ -29,15 +29,15 @@ export default function MainNavigation() {
           )}
           {session && (
             <>
-            <Link href="/edit">
-              <a className={mainClasses.link}>Add</a>
-            </Link>
-            <Link href="/profile">
-              <a className={mainClasses.link}>Profile</a>
-            </Link>
-            <a href="#" className={mainClasses.link} onClick={logoutHandler}>
-              Logout
-            </a>
+              <Link href="/edit">
+                <a className={mainClasses.link}>Add</a>
+              </Link>
+              <Link href="/profile">
+                <a className={mainClasses.link}>Profile</a>
+              </Link>
+              <a href="#" className={mainClasses.link} onClick={logoutHandler}>
+                Logout
+              </a>
             </>
           )}
         </nav>
