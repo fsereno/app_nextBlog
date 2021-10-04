@@ -12,10 +12,8 @@
 .title {
   margin: 2rem 0 0;
   line-height: 1.15;
-}
-
-.title {
   font-size: 4rem;
+  font-weight: 200;
 }
 
 .title,

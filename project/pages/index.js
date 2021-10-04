@@ -15,7 +15,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Title>Welcome to blog.js</Title>
-      <Description value="The Javascript blog" />
+      <Description>The Javascript blog</Description>
       <div className={styles.grid}>
         <Cards posts={props.posts} />
       </div>

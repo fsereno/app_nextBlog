@@ -1,16 +1,21 @@
 .header {
   width: 100%;
-  height: 5rem;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
+  display: flex;
+  flex-grow: 1;
+  flex-flow: column;
+  padding: 1rem 10% 1.5rem;
+}
+
+.header nav {
+  margin: 1rem 0 0;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 0;
 }
 
@@ -28,7 +33,6 @@
 
 .header a {
   text-decoration: none;
-  font-weight: bold;
 }
 
 .header button {
