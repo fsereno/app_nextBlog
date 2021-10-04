@@ -52,7 +52,7 @@ export default function EditorForm({ post = {}, id }) {
   };
 
   return (
-    <form className={classes.form} noValidate onSubmit={onSubmit}>
+    <form className={classes.form} onSubmit={onSubmit}>
       <div className={classes.controls}>
         <div className={classes.control}>
           <label htmlFor="title">Title</label>

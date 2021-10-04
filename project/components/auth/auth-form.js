@@ -38,6 +38,10 @@ function AuthForm() {
 
   async function submitHandler(event) {
     event.preventDefault();
+    const isValid = event.nativeEvent.target.checkValidity();
+    if (!isValid) {
+      return;
+    }
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
     if (isLogin) {

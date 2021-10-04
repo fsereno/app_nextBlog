@@ -26,11 +26,6 @@
   height: 1.5rem;
 }
 
-.form input:invalid,
-.form textarea:invalid {
-  border: 1px solid red;
-}
-
 .form input:valid,
 .form textarea:valid {
   border: 1px solid green;
