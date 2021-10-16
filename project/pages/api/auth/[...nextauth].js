@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
 
 import { verifyPassword } from "../../../utils/auth";
-import { connectDB } from "../../../utils/mongoDbUtil";
+import { connectDB, getDB } from "../../../utils/mongoDbUtil";
 
 export default NextAuth({
   session: {
@@ -12,7 +12,8 @@ export default NextAuth({
     Providers.Credentials({
       async authorize(credentials) {
         const client = await connectDB();
-        const usersCollection = client.db().collection("users");
+        const db = getDB(client);
+        const usersCollection = db.collection('users');
         const user = await usersCollection.findOne({
           email: credentials.email,
         });

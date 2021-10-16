@@ -1,12 +1,12 @@
 import { MongoClient, ObjectId } from "mongodb";
-import { mongoDBConnectionString, mongoDBConnectionString2 } from "./connectionStrings";
+import { mongoDBConnectionString } from "./connectionStrings";
 
 export function getDB(client) {
   return client.db(process.env.MONGO_DB);
 }
 
 export async function connectDB() {
-  const client = await MongoClient.connect(mongoDBConnectionString2);
+  const client = await MongoClient.connect(mongoDBConnectionString);
   return client;
 }
 

@@ -1,5 +1,5 @@
 import { hashPassword } from "../../../utils/auth";
-import { connectDB } from "../../../utils/mongoDbUtil";
+import { connectDB, getDB } from "../../../utils/mongoDbUtil";
 
 async function handler(req, res) {
   if (req.method !== "POST") {
@@ -7,7 +7,6 @@ async function handler(req, res) {
   }
 
   const data = req.body;
-
   const { email, password } = data;
 
   if (
@@ -24,9 +23,7 @@ async function handler(req, res) {
   }
 
   const client = await connectDB();
-
-  const db = client.db();
-
+  const db = getDB(client);
   const existingUser = await db.collection("users").findOne({ email: email });
 
   if (existingUser) {
