@@ -1,26 +1,27 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Editor } from '@tinymce/tinymce-react';
 import Router from "next/router";
-
 import ErrorMessage from "../ui/error-message";
 import classes from "../../styles/form.module.css";
 
 export default function EditorForm({ post = {}, id }) {
   const [title, setTitle] = useState(post.title || "");
   const [summary, setSummary] = useState(post.summary || "");
-  const [content, setContent] = useState(post.content || "");
+  const [content] = useState(post.content || "");
   const [featured, setFeatured] = useState(post.featured || false);
   const [showError, setShowError] = useState(false);
+  const editorRef = useRef(null);
 
   const onSubmit = (event) => {
     event.preventDefault();
     const isValid = event.nativeEvent.target.checkValidity();
-
     if (isValid) {
+      const cont = editorRef.current.getContent();
       const data = {
         id,
         title,
         summary,
-        content,
+        content: cont,
         featured,
       };
       fetch("/api/posts/edit", {
@@ -50,7 +51,6 @@ export default function EditorForm({ post = {}, id }) {
       );
     }
   };
-
   return (
     <form className={classes.form} onSubmit={onSubmit}>
       <div className={classes.controls}>
@@ -76,13 +76,25 @@ export default function EditorForm({ post = {}, id }) {
         </div>
         <div className={classes.control}>
           <label htmlFor="content">Content</label>
-          <textarea
-            type="text"
-            rows="5"
+          <Editor
             id="content"
-            required
-            value={content}
-            onChange={(event) => setContent(event.target.value)}
+            apiKey='4qbicqfxozwdpc10twuleaerv04botzndceu9rtb6gn8bk6w'
+            onInit={(evt, editor) => editorRef.current = editor}
+            initialValue={content}
+            init={{
+              height: 500,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+              content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
+            }}
           />
         </div>
         <div className={classes.control}>

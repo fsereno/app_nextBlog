@@ -6,7 +6,7 @@ import postClasses from "../../styles/post.module.css";
 import headingsClasses from "../../styles/headings.module.css";
 import mainClasses from "../../styles/main.module.css";
 
-export default function Post({ children, post, id }) {
+export default function Post({ post, id }) {
   const [session] = useSession();
   return (
     <>
@@ -20,7 +20,7 @@ export default function Post({ children, post, id }) {
           <DeleteAction id={id} />
         </div>
       )}
-      <div className={postClasses.content}>{children}</div>
+      <div dangerouslySetInnerHTML={{__html: post.content}}></div>
     </>
   );
 }

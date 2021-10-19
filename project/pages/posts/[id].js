@@ -5,9 +5,7 @@ export default function PostPage(props) {
   const post = JSON.parse(props.post);
   return (
     <>
-      <Post post={post} id={props.id}>
-        {post.content}
-      </Post>
+      <Post post={post} id={props.id} content={props.content} />
     </>
   );
 }
