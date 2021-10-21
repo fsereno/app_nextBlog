@@ -24,7 +24,7 @@ async function createUser(email, password) {
   return data;
 }
 
-function AuthForm() {
+function AuthForm(props) {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [isLogin, setIsLogin] = useState(true);
@@ -89,13 +89,15 @@ function AuthForm() {
         </ErrorMessage>
         <div className={classes.actions}>
           <button>{isLogin ? "Login" : "Create Account"}</button>
-          <a
+          {props.allowUserCreate &&
+            <a
             href="#"
             className={classes.toggle}
             onClick={switchAuthModeHandler}
-          >
-            {isLogin ? "Create new account" : "Login with existing account"}
-          </a>
+            >
+              {isLogin ? "Create new account" : "Login with existing account"}
+            </a>
+          }
         </div>
       </form>
     </>
