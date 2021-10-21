@@ -8,7 +8,7 @@ export default function LoginPage(props) {
         <title>User Login</title>
         <meta name="description" content="User login and signup." />
       </Head>
-      <AuthForm allowUserCreate={props.allowUserCreate}/>
+      <AuthForm allowUserCreate={props.allowUserCreate} />
     </>
   );
 }
@@ -16,7 +16,7 @@ export default function LoginPage(props) {
 export async function getServerSideProps() {
   return {
     props: {
-      allowUserCreate: process.env.ALLOW_USER_CREATE === 'true'
-    }
-  }
+      allowUserCreate: process.env.ALLOW_USER_CREATE === "true",
+    },
+  };
 }

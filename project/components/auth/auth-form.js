@@ -89,15 +89,15 @@ function AuthForm(props) {
         </ErrorMessage>
         <div className={classes.actions}>
           <button>{isLogin ? "Login" : "Create Account"}</button>
-          {props.allowUserCreate &&
+          {props.allowUserCreate && (
             <a
-            href="#"
-            className={classes.toggle}
-            onClick={switchAuthModeHandler}
+              href="#"
+              className={classes.toggle}
+              onClick={switchAuthModeHandler}
             >
               {isLogin ? "Create new account" : "Login with existing account"}
             </a>
-          }
+          )}
         </div>
       </form>
     </>
