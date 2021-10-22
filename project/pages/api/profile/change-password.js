@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/client";
 import { hashPassword, verifyPassword } from "../../../utils/auth";
-import { connectDB } from "../../../utils/mongoDbUtil";
+import { connectDB, getDB } from "../../../utils/mongoDbUtil";
 
 async function handler(req, res) {
   if (req.method !== "PATCH") {
@@ -17,7 +17,8 @@ async function handler(req, res) {
   const newPassword = req.body.newPassword;
 
   const client = await connectDB();
-  const usersCollection = client.db().collection("users");
+  const db = getDB(client);
+  const usersCollection = db.collection("users");
   const user = await usersCollection.findOne({ email: userEmail });
 
   if (!user) {
