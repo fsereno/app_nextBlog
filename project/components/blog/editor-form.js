@@ -90,7 +90,7 @@ export default function EditorForm({ post = {}, id }) {
                 "insertdatetime media table paste code help wordcount",
               ],
               toolbar:
-                "undo redo | formatselect | " +
+                "code | undo redo | formatselect | " +
                 "bold italic backcolor | alignleft aligncenter " +
                 "alignright alignjustify | bullist numlist outdent indent | " +
                 "removeformat | help",

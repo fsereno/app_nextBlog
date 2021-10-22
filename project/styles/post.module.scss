@@ -1,0 +1,29 @@
+@import './constants.scss';
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: auto;
+  padding: 0.5rem 0 0;
+}
+
+.content {
+  padding: 1rem 2rem;
+  h1, h2 {
+    margin: 2rem 0 0;
+    font-size: 3rem;
+    font-weight: 200;
+  }
+  p {
+    line-height: 1.5rem;
+  }
+
+  code {
+    background: $light-grey;
+    display: block;
+    border-radius: .5rem;
+  }
+}
