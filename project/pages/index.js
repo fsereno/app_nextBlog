@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Cards from "../components/blog/cards";
 import Title from "../components/ui/title";
 import { getPosts } from "../utils/dal";
@@ -19,19 +18,6 @@ export default function Home(props) {
       <div className={styles.grid}>
         <Cards posts={props.posts} />
       </div>
-      <footer className={styles.footer}>
-        <a
-          className={styles.link}
-          href="https://fsereno.github.io/portfolio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-           By{" "}
-          <strong className={styles.logo}>
-            Fabio Sereno
-          </strong>
-        </a>
-      </footer>
     </>
   );
 }
