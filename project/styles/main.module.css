@@ -12,8 +12,12 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   align-items: normal;
+}
+
+.left {
+  text-align: left;
 }
 
 .logo {
@@ -30,11 +34,4 @@ a.link:focus,
 a.link:active {
   color: #0070f3;
   border-color: #0070f3;
-}
-
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
-  }
 }
