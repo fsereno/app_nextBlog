@@ -1,1 +1,8 @@
 https://app-next-blog.vercel.app/
+
+To Do...
+
+- Card width issue
+- Add Read More link to each Card
+- Include FS logo ?
+- Search facility
