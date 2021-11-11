@@ -9,6 +9,7 @@ export default function EditorForm({ post = {}, id }) {
   const [summary, setSummary] = useState(post.summary || "");
   const [content] = useState(post.content || "");
   const [featured, setFeatured] = useState(post.featured || false);
+  const [published, setPublished] = useState(post.published || false);
   const [showError, setShowError] = useState(false);
   const editorRef = useRef(null);
 
@@ -23,6 +24,7 @@ export default function EditorForm({ post = {}, id }) {
         summary,
         content: cont,
         featured,
+        published
       };
       fetch("/api/posts/edit", {
         method: "PUT",
@@ -107,6 +109,17 @@ export default function EditorForm({ post = {}, id }) {
             checked={featured}
             onChange={(event) => {
               setFeatured(event.target.checked);
+            }}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="publish">Publish</label>
+          <input
+            type="checkbox"
+            id="publish"
+            checked={published}
+            onChange={(event) => {
+              setPublished(event.target.checked);
             }}
           />
         </div>

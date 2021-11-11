@@ -23,7 +23,7 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  const posts = await getPosts({ featured: true });
+  const posts = await getPosts({ featured: true, published: true });
   return {
     props: {
       posts: JSON.stringify(posts),

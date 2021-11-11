@@ -1,3 +1,4 @@
+import { getSession } from "next-auth/client";
 import Head from "next/head";
 import { getPosts } from "../../utils/dal";
 import Cards from "../../components/blog/cards";
@@ -5,7 +6,9 @@ import styles from "../../styles/main.module.css";
 import Title from "../../components/ui/title";
 
 export default function AllPostsPage(props) {
-  const posts = JSON.parse(props.posts);
+  const editorPosts = JSON.parse(props.posts);
+  const allPublishedPosts = editorPosts.filter(post => post.published);
+  const posts = props.session ? editorPosts : allPublishedPosts;
   return (
     <>
       <Head>
@@ -23,11 +26,13 @@ export default function AllPostsPage(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const session = await getSession({ req: context.req });
   const posts = await getPosts();
   return {
     props: {
       posts: JSON.stringify(posts),
+      session
     },
   };
 }
