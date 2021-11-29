@@ -7,6 +7,7 @@ export default function Card({ title, summary, id }) {
       <a className={styles.card}>
         <h2>{title}</h2>
         <p>{summary}</p>
+        <small>Read more...</small>
       </a>
     </Link>
   );
