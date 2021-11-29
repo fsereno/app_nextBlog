@@ -20,7 +20,10 @@ export default function Post({ post, id }) {
           <DeleteAction id={id} />
         </div>
       )}
-      <div className={postClasses.content} dangerouslySetInnerHTML={{ __html: post.content }}></div>
+      <div
+        className={postClasses.content}
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      ></div>
     </>
   );
 }

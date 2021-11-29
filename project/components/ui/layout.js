@@ -13,10 +13,8 @@ export default function Layout({ children }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-           By&nbsp;
-          <strong className={layout.logo}>
-            Fabio Sereno
-          </strong>
+          By&nbsp;
+          <strong className={layout.logo}>Fabio Sereno</strong>
         </a>
       </footer>
     </>

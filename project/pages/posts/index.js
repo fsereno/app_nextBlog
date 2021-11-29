@@ -7,7 +7,7 @@ import Title from "../../components/ui/title";
 
 export default function AllPostsPage(props) {
   const editorPosts = JSON.parse(props.posts);
-  const allPublishedPosts = editorPosts.filter(post => post.published);
+  const allPublishedPosts = editorPosts.filter((post) => post.published);
   const posts = props.session ? editorPosts : allPublishedPosts;
   return (
     <>
@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       posts: JSON.stringify(posts),
-      session
+      session,
     },
   };
 }

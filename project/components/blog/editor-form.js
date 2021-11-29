@@ -24,7 +24,7 @@ export default function EditorForm({ post = {}, id }) {
         summary,
         content: cont,
         featured,
-        published
+        published,
       };
       fetch("/api/posts/edit", {
         method: "PUT",
